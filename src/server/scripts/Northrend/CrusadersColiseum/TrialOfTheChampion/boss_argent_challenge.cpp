@@ -337,7 +337,7 @@ public:
                 me->InterruptNonMeleeSpells(true);
                 DoCastAOE(SPELL_HOLY_NOVA, false);
                 DoCast(me, SPELL_SHIELD);
-                DoCastAOE(SPELL_SUMMON_MEMORY, false);
+                DoCast(me, SPELL_SUMMON_MEMORY);
                 DoCastAOE(SPELL_CONFESS, false);
 
                 bHealth = true;

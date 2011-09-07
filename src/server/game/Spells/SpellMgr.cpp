@@ -295,6 +295,9 @@ int32 GetDiminishingReturnsLimitDuration(DiminishingGroup group, SpellInfo const
             // Repentance - limit to 6 seconds in PvP
             if (spellproto->SpellFamilyFlags[0] & 0x4)
                 return 6 * IN_MILLISECONDS;
+			// Judgement of Justice
+			if (spellproto->SpellFamilyFlags[0] & 0x100000)
+				return DIMINISHING_LIMITONLY;
             break;
         }
         case SPELLFAMILY_WARLOCK:
