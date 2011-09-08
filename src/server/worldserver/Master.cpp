@@ -125,16 +125,8 @@ int Master::Run()
 
     sLog->outString("%s (worldserver-daemon)", _FULLVERSION);
     sLog->outString("<Ctrl-C> to stop.\n");
-
-    sLog->outString(" ______                       __");
-    sLog->outString("/\\__  _\\       __          __/\\ \\__");
-    sLog->outString("\\/_/\\ \\/ _ __ /\\_\\    ___ /\\_\\ \\ ,_\\  __  __");
-    sLog->outString("   \\ \\ \\/\\`'__\\/\\ \\ /' _ `\\/\\ \\ \\ \\/ /\\ \\/\\ \\");
-    sLog->outString("    \\ \\ \\ \\ \\/ \\ \\ \\/\\ \\/\\ \\ \\ \\ \\ \\_\\ \\ \\_\\ \\");
-    sLog->outString("     \\ \\_\\ \\_\\  \\ \\_\\ \\_\\ \\_\\ \\_\\ \\__\\\\/`____ \\");
-    sLog->outString("      \\/_/\\/_/   \\/_/\\/_/\\/_/\\/_/\\/__/ `/___/> \\");
-    sLog->outString("                                 C O R E  /\\___/");
-    sLog->outString("http://TrinityCore.org                    \\/__/\n");
+    sLog->outString("D A R K M O O N   C O R E");
+    sLog->outString("http://DarkmoonCore.org");
 
 #ifdef USE_SFMT_FOR_RNG
     sLog->outString("\n");

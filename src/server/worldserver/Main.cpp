@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2011 DarkmoonCore <http://www.Darkmooncore.org/>
  * Copyright (C) 2008-2011 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
  *
@@ -38,8 +39,8 @@
 #ifdef _WIN32
 #include "ServiceWin32.h"
 char serviceName[] = "worldserver";
-char serviceLongName[] = "TrinityCore world service";
-char serviceDescription[] = "TrinityCore World of Warcraft emulator world service";
+char serviceLongName[] = "DarkmoonCore world service";
+char serviceDescription[] = "DarkmoonCore World of Warcraft emulator world service";
 /*
  * -1 - not in service mode
  *  0 - stopped
