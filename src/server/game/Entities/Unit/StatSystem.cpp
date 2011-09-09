@@ -1024,6 +1024,8 @@ bool Guardian::UpdateStats(Stats stat)
         if (aurEff)
             mod += CalculatePctN(1.0f, aurEff->GetAmount());                                                    // Glyph of the Ghoul adds a flat value to the scale mod
         ownersBonus = float(owner->GetStat(stat)) * mod;
+        // ownersBonus is multiplied by TOTAL_PCT too
+        ownersBonus *= GetModifierValue(UNIT_MOD_STAT_STAMINA, TOTAL_PCT);
         value += ownersBonus;
     }
     else if (stat == STAT_STAMINA)
