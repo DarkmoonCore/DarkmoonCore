@@ -630,19 +630,16 @@ void Player::UpdateParryPercentage()
     float value = 0.0f;
     if (CanParry())
     {
+        // Base parry
+        value  = 5.0f;
         // Modify value from defense skill
         value += (int32(GetDefenseSkillValue()) - int32(GetMaxSkillValueForLevel())) * 0.04f;
-        // Parry from rating
-        value += GetRatingBonusValue(CR_PARRY);
-        // Diminishing Returns
-        value = ParryDiminishingReturn(value);
         // Parry from SPELL_AURA_MOD_PARRY_PERCENT aura
         value += GetTotalAuraModifier(SPELL_AURA_MOD_PARRY_PERCENT);
-        // Base Parry
-        value += 5.0f;
+        // Parry from rating
+        value += GetRatingBonusValue(CR_PARRY);
         value = value < 0.0f ? 0.0f : value;
     }
-
     SetStatFloatValue(PLAYER_PARRY_PERCENTAGE, value);
 }
 
@@ -652,14 +649,10 @@ void Player::UpdateDodgePercentage()
     float value = GetDodgeFromAgility();
     // Modify value from defense skill
     value += (int32(GetDefenseSkillValue()) - int32(GetMaxSkillValueForLevel())) * 0.04f;
-    // Dodge from rating
-    value += GetRatingBonusValue(CR_DODGE);
-    // Dodge Diminishing Returns
-    value = DodgeDiminishingReturn(value);
     // Dodge from SPELL_AURA_MOD_DODGE_PERCENT aura
     value += GetTotalAuraModifier(SPELL_AURA_MOD_DODGE_PERCENT);
-    // Base Dodge
-    value += GetBaseDodge();
+    // Dodge from rating
+    value += GetRatingBonusValue(CR_DODGE);
     value = value < 0.0f ? 0.0f : value;
     SetStatFloatValue(PLAYER_DODGE_PERCENTAGE, value);
 }
