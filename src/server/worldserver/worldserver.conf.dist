@@ -2707,6 +2707,27 @@ NoResetTalentsCost = 0
 
 Guild.AllowMultipleGuildMaster = 0
 
+
+###################################################################################################################
+# SOUND ANNOUNCE SYSTEM
+#
+#    Server.SoundAnnounce - This system adds a sound to announce command, so when you type an announce the players
+#							hears the sound that you set for SoundAnnounce.ID.
+#        Enable Sound Announce System
+#        Default: 0 - off
+#                 1 - on
+#
+#    SoundAnnounce.ID
+#        Sets the ID for the sound that will be played when the sound announce is on.
+#        Default: 8960 - announce (This is the sound from the raid ready check sound)
+#
+###################################################################################################################
+
+Server.SoundAnnounce = 0
+SoundAnnounce.ID = 8960
+
+###################################################################################################################
+
 #
 #     ShowKickInWorld
 #        Description: Determines whether a message is broadcasted to the entire server when a

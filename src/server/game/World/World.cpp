@@ -402,7 +402,7 @@ void World::LoadConfigSettings(bool reload)
 
     ///- Read the player limit and the Message of the day from the config file
     SetPlayerAmountLimit(sConfig->GetIntDefault("PlayerLimit", 100));
-    SetMotd(sConfig->GetStringDefault("Motd", "Welcome to a Trinity Core Server."));
+    SetMotd(sConfig->GetStringDefault("Motd", "Welcome to a Darkmoon Core Server."));
 
     ///- Read ticket system setting from the config file
     m_bool_configs[CONFIG_ALLOW_TICKETS] = sConfig->GetBoolDefault("AllowTickets", true);
@@ -413,6 +413,9 @@ void World::LoadConfigSettings(bool reload)
     ///- Send server info on login?
     m_int_configs[CONFIG_ENABLE_SINFO_LOGIN] = sConfig->GetIntDefault("Server.LoginInfo", 0);
 
+    ///- Enable Sound Announce System?
+    m_int_configs[CONFIG_ENABLE_SOUND_ANNOUNCE] = sConfig->GetIntDefault("Server.SoundAnnounce", 0);	
+	m_int_configs[CONFIG_SOUND_ANNOUNCE_ID] = sConfig->GetIntDefault("SoundAnnounce.ID", 8960);
     ///- Read all rates from the config file
     rate_values[RATE_HEALTH]      = sConfig->GetFloatDefault("Rate.Health", 1);
     if (rate_values[RATE_HEALTH] < 0)

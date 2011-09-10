@@ -42,7 +42,6 @@
 
 bool ChatHandler::HandleNameAnnounceCommand(const char* args)
 {
-    WorldPacket data;
     if (!*args)
         return false;
 
@@ -51,7 +50,15 @@ bool ChatHandler::HandleNameAnnounceCommand(const char* args)
         name = session->GetPlayer()->GetName();
 
     sWorld->SendWorldText(LANG_ANNOUNCE_COLOR, name.c_str(), args);
-    return true;
+	uint32 soundId = sWorld->getIntConfig(CONFIG_SOUND_ANNOUNCE_ID);
+	
+		WorldPacket data(SMSG_PLAY_SOUND, 4);
+    data << uint32(soundId) << m_session->GetPlayer()->GetGUID();
+	if(sWorld->getIntConfig(CONFIG_ENABLE_SOUND_ANNOUNCE) == 1)
+    sWorld->SendGlobalMessage(&data);
+	return true;
+
+	
 }
 
 bool ChatHandler::HandleGMNameAnnounceCommand(const char* args)
