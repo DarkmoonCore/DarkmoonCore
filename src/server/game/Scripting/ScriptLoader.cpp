@@ -51,6 +51,7 @@ void AddSC_gm_commandscript();
 void AddSC_go_commandscript();
 void AddSC_gobject_commandscript();
 void AddSC_honor_commandscript();
+void AddSC_jail_commandscript();
 void AddSC_learn_commandscript();
 void AddSC_modify_commandscript();
 void AddSC_npc_commandscript();
@@ -651,6 +652,7 @@ void AddCommandScripts()
     AddSC_go_commandscript();
     AddSC_gobject_commandscript();
     AddSC_honor_commandscript();
+	AddSC_jail_commandscript();
     AddSC_learn_commandscript();
     AddSC_modify_commandscript();
     AddSC_npc_commandscript();

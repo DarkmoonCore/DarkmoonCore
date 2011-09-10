@@ -1152,6 +1152,21 @@ class Player : public Unit, public GridObject<Player>
         void GiveLevel(uint8 level);
 
         void InitStatsForLevel(bool reapplyMods = false);
+        uint32 m_JailRelease;       // Entlassungszeit
+        uint32 m_JailAnzahl;        // Anzahl der Knastbesuche
+        uint32 m_JailGMAcc;         // GM-Account der ihn eingebuchtet hat
+        uint32 m_JailDauer;         // Dauer des Knastaufenthaltes
+        uint32 m_JailWarnTimer;     // Timer damit die Warnungen vom Jail nicht warend eines Ladebildschirms gesendet werden!
+        uint32 m_JailBans;          // Anzahl der Bannungen durch das Jail
+        uint32 m_JailZeit;          // Inhaftierungszeit
+
+        std::string m_JailGrund;    // Der Grund
+        std::string m_JailGMChar;   // GM-Charakter der ihn eingebuchtet hat
+
+        bool m_Jailed;              // Zur Zeit gerade im Knast?
+
+        void JailDatenLaden();
+        void JailDatenSpeichern();		
 
         // Played Time Stuff
         time_t m_logintime;

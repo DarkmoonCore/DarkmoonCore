@@ -208,7 +208,7 @@ uint32 TimeStringToSecs(const std::string& timestring)
     return secs;
 }
 
-std::string TimeToTimestampStr(time_t t)
+std::string TimeToTimestampStr(time_t t, TimestampModus modus)
 {
     tm* aTm = localtime(&t);
     //       YYYY   year

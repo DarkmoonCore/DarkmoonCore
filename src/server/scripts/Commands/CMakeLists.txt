@@ -19,6 +19,7 @@ set(scripts_STAT_SRCS
   Commands/cs_gobject.cpp
   Commands/cs_gps.cpp
   Commands/cs_honor.cpp
+  Commands/cs_jail.cpp
   Commands/cs_learn.cpp
   Commands/cs_modify.cpp
   Commands/cs_npc.cpp

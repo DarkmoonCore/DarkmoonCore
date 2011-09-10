@@ -112,6 +112,7 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/src/server/game/Loot
   ${CMAKE_SOURCE_DIR}/src/server/game/Mails
   ${CMAKE_SOURCE_DIR}/src/server/game/Maps
+  ${CMAKE_SOURCE_DIR}/src/server/game/Jail
   ${CMAKE_SOURCE_DIR}/src/server/game/Miscellaneous
   ${CMAKE_SOURCE_DIR}/src/server/game/Movement
   ${CMAKE_SOURCE_DIR}/src/server/game/Movement/MovementGenerators
