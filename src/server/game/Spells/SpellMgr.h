@@ -99,7 +99,11 @@ enum SpellLinkedType
     SPELL_LINK_REMOVE   = 0,
 };
 
-
+// Different spell properties
+inline SpellSchoolMask GetSpellSchoolMask(SpellEntry const* spellInfo)
+{
+    return SpellSchoolMask(spellInfo->SchoolMask);
+}
 // Spell proc event related declarations (accessed using SpellMgr functions)
 enum ProcFlags
 {
