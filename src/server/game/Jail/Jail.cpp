@@ -20,6 +20,9 @@ bool Jail::LadeKonfiguration(bool reload)
 
     m_JailKonf.MapAlly = 0;
     m_JailKonf.MapHorde = 1;
+	
+	m_JailKonf.MapAllyOutside = 0;
+    m_JailKonf.MapHordeOutside = 1;
 
     m_JailKonf.BanDauer = 168;  // 1 Woche
 
@@ -31,11 +34,21 @@ bool Jail::LadeKonfiguration(bool reload)
     m_JailKonf.AllyPos.m_positionY = 631.795f;
     m_JailKonf.AllyPos.m_positionZ = 96.9406f;
     m_JailKonf.AllyPos.m_orientation = 2.1785f;
+	
+	m_JailKonf.AllyPosOutside.m_positionX = -8685.79f;
+    m_JailKonf.AllyPosOutside.m_positionY = 576.852f;
+    m_JailKonf.AllyPosOutside.m_positionZ = 96.9727f;
+    m_JailKonf.AllyPosOutside.m_orientation = 0.6805f;
 
     m_JailKonf.HordePos.m_positionX = 2179.85f;
     m_JailKonf.HordePos.m_positionY = -4763.96f;
     m_JailKonf.HordePos.m_positionZ = 54.911f;
     m_JailKonf.HordePos.m_orientation = 4.44216f;
+	
+    m_JailKonf.HordePosOutside.m_positionX = 2206.18f;
+    m_JailKonf.HordePosOutside.m_positionY = -4782.40f;
+    m_JailKonf.HordePosOutside.m_positionZ = 65.833f;
+    m_JailKonf.HordePosOutside.m_orientation = 2.60554f;	
 
     m_JailKonf.DelChar = false;
     m_JailKonf.BanAcc = true;
@@ -146,9 +159,9 @@ bool Jail::GotoKommando(ChatHandler * handler, const char * args)
 	Player * pCurrChar = handler->GetSession()->GetPlayer();
 
     if ((pCurrChar->getRace() == RACE_ORC) || (pCurrChar->getRace() == RACE_TAUREN) || (pCurrChar->getRace() == RACE_UNDEAD_PLAYER) || (pCurrChar->getRace() == RACE_TROLL) || (pCurrChar->getRace() == RACE_BLOODELF))
-        chr->TeleportTo(m_JailKonf.MapHorde, m_JailKonf.HordePos.m_positionX, m_JailKonf.HordePos.m_positionY, m_JailKonf.HordePos.m_positionZ, m_JailKonf.HordePos.m_orientation);
+        chr->TeleportTo(m_JailKonf.MapHordeOutside, m_JailKonf.HordePosOutside.m_positionX, m_JailKonf.HordePosOutside.m_positionY, m_JailKonf.HordePosOutside.m_positionZ, m_JailKonf.HordePosOutside.m_orientation);
     if ((pCurrChar->getRace() == RACE_HUMAN) || (pCurrChar->getRace() == RACE_DWARF) || (pCurrChar->getRace() == RACE_NIGHTELF) || (pCurrChar->getRace() == RACE_GNOME) || (pCurrChar->getRace() == RACE_DRAENEI))
-        chr->TeleportTo(m_JailKonf.MapAlly, m_JailKonf.AllyPos.m_positionX, m_JailKonf.AllyPos.m_positionY, m_JailKonf.AllyPos.m_positionZ, m_JailKonf.AllyPos.m_orientation);
+        chr->TeleportTo(m_JailKonf.MapAllyOutside, m_JailKonf.AllyPosOutside.m_positionX, m_JailKonf.AllyPosOutside.m_positionY, m_JailKonf.AllyPosOutside.m_positionZ, m_JailKonf.AllyPosOutside.m_orientation);
     return true;
 }
 

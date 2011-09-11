@@ -14,6 +14,8 @@ struct JailKonfStruktur
     uint32 MinGrund;
     uint32 MapAlly;
     uint32 MapHorde;
+    uint32 MapAllyOutside;
+    uint32 MapHordeOutside;	
     uint32 BanDauer;
     uint32 Radius;
     uint32 GMAcc;
@@ -21,6 +23,9 @@ struct JailKonfStruktur
 
     Position AllyPos;
     Position HordePos;
+	
+    Position AllyPosOutside;
+    Position HordePosOutside;	
 
     bool WarnUser;
     bool DelChar;
@@ -91,6 +96,12 @@ public:
 
     uint32 HoleAllyKnastKarte() const { return m_JailKonf.MapAlly; }
     uint32 HoleHordeKnastKarte() const { return m_JailKonf.MapHorde; }
+	
+    Position HoleAllyKnastPosOutside() const { return m_JailKonf.AllyPosOutside; }
+    Position HoleHordeKnastPosOutside() const { return m_JailKonf.HordePosOutside; }
+
+    uint32 HoleAllyKnastKarteOutside() const { return m_JailKonf.MapAllyOutside; }
+    uint32 HoleHordeKnastKarteOutside() const { return m_JailKonf.MapHordeOutside; }	
 
     void Kontrolle(Player * pPlayer, bool update = false);
     void SendeWarnung(Player * pPlayer);
