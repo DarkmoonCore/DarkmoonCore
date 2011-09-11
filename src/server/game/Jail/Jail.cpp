@@ -142,26 +142,13 @@ bool Jail::GotoKommando(ChatHandler * handler, const char * args)
     Player * chr = handler->GetSession()->GetPlayer();
     if (!chr)
         return false;
+		
+	Player * pCurrChar = handler->GetSession()->GetPlayer();
 
-    std::string tmp;
-    char * chartmp = strtok((char*)args, " ");
-    if (chartmp == NULL)
-    {
-        handler->SendSysMessage(LANG_JAIL_NO_SITE);
-        handler->SetSentErrorMessage(true);
-        return false;
-    }
-    else
-    {
-        tmp = chartmp;
-        normalizePlayerName(tmp);
-    }
-
-    if (tmp == "horde")
+    if ((pCurrChar->getRace() == RACE_ORC) || (pCurrChar->getRace() == RACE_TAUREN) || (pCurrChar->getRace() == RACE_UNDEAD_PLAYER) || (pCurrChar->getRace() == RACE_TROLL) || (pCurrChar->getRace() == RACE_BLOODELF))
         chr->TeleportTo(m_JailKonf.MapHorde, m_JailKonf.HordePos.m_positionX, m_JailKonf.HordePos.m_positionY, m_JailKonf.HordePos.m_positionZ, m_JailKonf.HordePos.m_orientation);
-    else
+    if ((pCurrChar->getRace() == RACE_HUMAN) || (pCurrChar->getRace() == RACE_DWARF) || (pCurrChar->getRace() == RACE_NIGHTELF) || (pCurrChar->getRace() == RACE_GNOME) || (pCurrChar->getRace() == RACE_DRAENEI))
         chr->TeleportTo(m_JailKonf.MapAlly, m_JailKonf.AllyPos.m_positionX, m_JailKonf.AllyPos.m_positionY, m_JailKonf.AllyPos.m_positionZ, m_JailKonf.AllyPos.m_orientation);
-
     return true;
 }
 

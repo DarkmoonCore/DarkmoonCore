@@ -1728,8 +1728,8 @@ void World::SetInitialWorldSettings()
 	
     // Jail von WarHead
     sLog->outString();
-    sLog->outString("Jail: (C) 2008-2011 by WarHead - United Worlds of MaNGOS - http://www.uwom.de"); // Durch das Andern / Loschen dieser Ausgabe erlischt das Recht zur Nutzung!
-    sLog->outString("Jail: Lade die Konfiguration..." );
+    sLog->outString("Jail: (C) 2011 by WarKing - DarkmoonCore - http://www.darkmooncore.org");
+    sLog->outString("Jail: Loading configuration..." );
     if (!sJail->LadeKonfiguration())
     {
         sLog->outError(sObjectMgr->GetTrinityStringForDBCLocale(LANG_JAIL_CONF_ERR1));

@@ -684,14 +684,14 @@ Player::Player (WorldSession *session): Unit(), m_achievementMgr(this), m_reputa
 
     m_social = NULL;
 
-	    // Jail von WarHead
-    m_JailRelease = 0;                      // Entlassungszeit
-    m_JailAnzahl = 0;                       // Anzahl der Knastbesuche
-    m_JailGMAcc = 0;                        // GM-Account der ihn eingebuchtet hat
-    m_JailDauer = 0;                        // Dauer des Knastaufenthaltes
-    m_JailBans = 0;                         // Anzahl der Bannungen durch das Jail
-    m_JailWarnTimer = 20*IN_MILLISECONDS;   // Timer damit die Warnungen vom Jail nicht warend eines Ladebildschirms gesendet werden!
-    m_Jailed = false;                       // Zur Zeit gerade im Knast?
+	    // Jail by WarKing
+    m_JailRelease = 0;                      
+    m_JailAnzahl = 0;                       
+    m_JailGMAcc = 0;                        
+    m_JailDauer = 0;                        
+    m_JailBans = 0;                         
+    m_JailWarnTimer = 20*IN_MILLISECONDS;   
+    m_Jailed = false;                       
 	
     // group is initialized in the reference constructor
     SetGroupInvite(NULL);
