@@ -35,10 +35,10 @@ bool Jail::LadeKonfiguration(bool reload)
     m_JailKonf.AllyPos.m_positionZ = 96.9406f;
     m_JailKonf.AllyPos.m_orientation = 2.1785f;
 	
-	m_JailKonf.AllyPosOutside.m_positionX = -8685.79f;
-    m_JailKonf.AllyPosOutside.m_positionY = 576.852f;
-    m_JailKonf.AllyPosOutside.m_positionZ = 96.9727f;
-    m_JailKonf.AllyPosOutside.m_orientation = 0.6805f;
+	m_JailKonf.AllyPosOutside.m_positionX = -8677.88f;
+    m_JailKonf.AllyPosOutside.m_positionY = 637.314f;
+    m_JailKonf.AllyPosOutside.m_positionZ = 96.9731f;
+    m_JailKonf.AllyPosOutside.m_orientation = 5.4046f;
 
     m_JailKonf.HordePos.m_positionX = 2179.85f;
     m_JailKonf.HordePos.m_positionY = -4763.96f;
