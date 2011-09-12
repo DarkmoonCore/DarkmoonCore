@@ -94,6 +94,7 @@ void RealmList::UpdateRealms(bool init)
 
             if (init)
                 sLog->outString("Added realm \"%s\".", fields[1].GetCString());
+				sLog->outString("Anti-DoS Attack System Active! - System by WarKing");
         }
         while (result->NextRow());
     }

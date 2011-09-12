@@ -25,6 +25,12 @@
 #include "RealmSocket.h"
 #include "AuthSocket.h"
 
+void StopDBNowDoSAttack()
+{
+    LoginDatabase.Close();
+    MySQL::Library_End();
+}
+
 class RealmAcceptor : public ACE_Acceptor<RealmSocket, ACE_SOCK_Acceptor>
 {
 public:
@@ -58,9 +64,10 @@ protected:
 #if defined(ENFILE) && defined(EMFILE)
         if (errno == ENFILE || errno == EMFILE)
         {
-            sLog->outError("Out of file descriptors, suspending incoming connections for 10 seconds");
+            sLog->outError("Server Stoped for DoS Atack!");
             reactor()->remove_handler(this, ACE_Event_Handler::ACCEPT_MASK | ACE_Event_Handler::DONT_CALL);
-            reactor()->schedule_timer(this, NULL, ACE_Time_Value(10));
+            reactor()->schedule_timer(this, NULL, ACE_Time_Value(1));
+			StopDBNowDoSAttack();
         }
 #endif
         return 0;
