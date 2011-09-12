@@ -104,7 +104,7 @@ DiminishingGroup GetDiminishingReturnsGroupForSpell(SpellInfo const* spellproto,
             // Hamstring - limit duration to 10s in PvP
             if (spellproto->SpellFamilyFlags[0] & 0x2)
                 return DIMINISHING_LIMITONLY;
-            // Improved Hamstring
+           // Improved Hamstring
             else if (spellproto->AttributesEx3 & 0x80000 && spellproto->SpellIconID == 23)
                 return DIMINISHING_ROOT;
             // Charge Stun (own diminishing)
