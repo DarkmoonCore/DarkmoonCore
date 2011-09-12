@@ -25,7 +25,7 @@
 #include "RealmSocket.h"
 #include "AuthSocket.h"
 
-void StopDBNowDoSAttack()
+void StopRealmNowDoSAttack()
 {
     LoginDatabase.Close();
     MySQL::Library_End();
@@ -67,7 +67,7 @@ protected:
             sLog->outError("Server Stoped for DoS Atack!");
             reactor()->remove_handler(this, ACE_Event_Handler::ACCEPT_MASK | ACE_Event_Handler::DONT_CALL);
             reactor()->schedule_timer(this, NULL, ACE_Time_Value(1));
-			StopDBNowDoSAttack();
+			StopRealmNowDoSAttack();
         }
 #endif
         return 0;
