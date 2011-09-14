@@ -1,0 +1,1 @@
+DELETE FROM `creature` where id=24213;
