@@ -28,7 +28,7 @@ class Battleground;
 #define BG_AV_CAPTIME                    240000  //4:00
 #define BG_AV_SNOWFALL_FIRSTCAP          300000  //5:00 but i also have seen 4:05
 
-#define BG_AV_SCORE_INITIAL_POINTS       300 // Change initial points to 300 (custum)
+#define BG_AV_SCORE_INITIAL_POINTS       300 // Change initial points to 300 (cust0m)
 /*#define BG_AV_SCORE_INITIAL_POINTS       600 */
 #define SEND_MSG_NEAR_LOSE               120
 
@@ -103,7 +103,8 @@ enum BG_AV_OTHER_VALUES
     AV_STATICCPLACE_MAX        = 123,
     AV_NORTH_MINE              = 0,
     AV_SOUTH_MINE              = 1,
-    AV_MINE_TICK_TIMER         = 45000,
+    AV_MINE_TICK_TIMER         = 50000, // Increase tick of mine(custom change)
+   // AV_MINE_TICK_TIMER         = 45000,
     AV_MINE_RECLAIM_TIMER      = 1200000, //TODO: get the right value.. this is currently 20 minutes
     AV_NEUTRAL_TEAM            = 0 //this is the neutral owner of snowfall
 };

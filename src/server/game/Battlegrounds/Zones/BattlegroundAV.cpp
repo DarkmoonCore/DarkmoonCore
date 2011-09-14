@@ -76,7 +76,7 @@ void BattlegroundAV::HandleKillUnit(Creature* unit, Player* killer)
     if (entry == BG_AV_CreatureInfo[AV_NPC_A_BOSS][0])
     {
         CastSpellOnTeam(23658, HORDE); //this is a spell which finishes a quest where a player has to kill the boss
-        RewardReputationToTeam(729, BG_AV_REP_BOSS, HORDE);
+        RewardReputationToTeam(730, BG_AV_REP_BOSS, HORDE);
         RewardHonorToTeam(GetBonusHonor(BG_AV_KILL_BOSS), HORDE);
         EndBattleground(HORDE);
         DelCreature(AV_CPLACE_TRIGGER17);
@@ -97,7 +97,7 @@ void BattlegroundAV::HandleKillUnit(Creature* unit, Player* killer)
             return;
         }
         m_CaptainAlive[0]=false;
-        RewardReputationToTeam(729, BG_AV_REP_CAPTAIN, HORDE);
+        RewardReputationToTeam(730, BG_AV_REP_CAPTAIN, HORDE);
         RewardHonorToTeam(GetBonusHonor(BG_AV_KILL_CAPTAIN), HORDE);
         UpdateScore(ALLIANCE, (-1)*BG_AV_RES_CAPTAIN);
         //spawn destroyed aura
