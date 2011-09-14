@@ -1,0 +1,1 @@
+UPDATE `quest_template` SET `ReqCreatureOrGOId1` = 30022, `ReqCreatureOrGOCount1` = 1, `StartScript` = 12948, `SpecialFlags` = 0 WHERE entry = 12948;

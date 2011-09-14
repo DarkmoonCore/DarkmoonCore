@@ -1,0 +1,1 @@
+UPDATE `creature_template` set `AIname`='SmartAI',`mechanic_immune_mask`=113983487 where entry=30022;
