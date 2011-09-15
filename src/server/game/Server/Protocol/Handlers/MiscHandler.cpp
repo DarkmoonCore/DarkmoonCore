@@ -167,7 +167,6 @@ void WorldSession::HandleGossipSelectOptionOpcode(WorldPacket & recv_data)
 void WorldSession::HandleWhoOpcode(WorldPacket & recv_data)
 {
     sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Recvd CMSG_WHO Message");
-    //recv_data.hexlike();
 
     uint32 matchcount = 0;
 
@@ -561,7 +560,7 @@ void WorldSession::HandleAddFriendOpcodeCallBack(QueryResult result, std::string
         team = Player::TeamForRace((*result)[1].GetUInt8());
         friendAcctid = (*result)[2].GetUInt32();
 
-        if (GetSecurity() >= SEC_MODERATOR || sWorld->getBoolConfig(CONFIG_ALLOW_GM_FRIEND) || sAccountMgr->GetSecurity(friendAcctid, realmID) < SEC_MODERATOR)
+        if (GetSecurity() >= SEC_MODERATOR || sWorld->getBoolConfig(CONFIG_ALLOW_GM_FRIEND) || AccountMgr::GetSecurity(friendAcctid, realmID) < SEC_MODERATOR)
         {
             if (friendGuid)
             {
@@ -922,9 +921,11 @@ void WorldSession::HandleAreaTriggerOpcode(WorldPacket & recv_data)
         return;
 
     // Check if we are in LfgGroup and trying to get out the dungeon
+    bool teleported = false;
     if (GetPlayer()->GetGroup() && GetPlayer()->GetGroup()->isLFGGroup() && GetPlayer()->GetMap()->IsDungeon() && at->target_mapId != GetPlayer()->GetMapId())
-        GetPlayer()->TeleportToBGEntryPoint();
-    else
+        teleported = GetPlayer()->TeleportToBGEntryPoint();
+
+    if (!teleported)
         GetPlayer()->TeleportTo(at->target_mapId, at->target_X, at->target_Y, at->target_Z, at->target_Orientation, TELE_TO_NOT_LEAVE_TRANSPORT);
 }
 
@@ -1340,7 +1341,6 @@ void WorldSession::HandleWhoisOpcode(WorldPacket& recv_data)
 void WorldSession::HandleComplainOpcode(WorldPacket & recv_data)
 {
     sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: CMSG_COMPLAIN");
-    recv_data.hexlike();
 
     uint8 spam_type;                                        // 0 - mail, 1 - chat
     uint64 spammer_guid;
@@ -1401,7 +1401,6 @@ void WorldSession::HandleRealmSplitOpcode(WorldPacket & recv_data)
 void WorldSession::HandleFarSightOpcode(WorldPacket & recv_data)
 {
     sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: CMSG_FAR_SIGHT");
-    //recv_data.hexlike();
 
     uint8 apply;
     recv_data >> apply;
@@ -1626,7 +1625,6 @@ void WorldSession::HandleMoveSetCanFlyAckOpcode(WorldPacket & recv_data)
 {
     // fly mode on/off
     sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: CMSG_MOVE_SET_CAN_FLY_ACK");
-    //recv_data.hexlike();
 
     uint64 guid;                                            // guid - unused
     recv_data.readPackGUID(guid);

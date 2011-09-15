@@ -71,7 +71,7 @@ pEffect SpellEffects[TOTAL_SPELL_EFFECTS]=
     &Spell::EffectUnused,                                   //  4 SPELL_EFFECT_PORTAL_TELEPORT          unused
     &Spell::EffectTeleportUnits,                            //  5 SPELL_EFFECT_TELEPORT_UNITS
     &Spell::EffectApplyAura,                                //  6 SPELL_EFFECT_APPLY_AURA
-    &Spell::EffectEnvirinmentalDMG,                         //  7 SPELL_EFFECT_ENVIRONMENTAL_DAMAGE
+    &Spell::EffectEnvironmentalDMG,                         //  7 SPELL_EFFECT_ENVIRONMENTAL_DAMAGE
     &Spell::EffectPowerDrain,                               //  8 SPELL_EFFECT_POWER_DRAIN
     &Spell::EffectHealthLeech,                              //  9 SPELL_EFFECT_HEALTH_LEECH
     &Spell::EffectHeal,                                     // 10 SPELL_EFFECT_HEAL
@@ -281,7 +281,7 @@ void Spell::EffectInstaKill(SpellEffIndex /*effIndex*/)
     m_caster->DealDamage(unitTarget, unitTarget->GetHealth(), NULL, NODAMAGE, SPELL_SCHOOL_MASK_NORMAL, NULL, false);
 }
 
-void Spell::EffectEnvirinmentalDMG(SpellEffIndex /*effIndex*/)
+void Spell::EffectEnvironmentalDMG(SpellEffIndex /*effIndex*/)
 {
     if (!unitTarget || !unitTarget->isAlive())
         return;
@@ -720,6 +720,14 @@ void Spell::SpellDamageSchoolDmg(SpellEffIndex effIndex)
                         damage += int32(m_caster->GetTotalAttackPowerValue(BASE_ATTACK) * 0.035f);
                     }
                 }
+                break;
+            }
+            case SPELLFAMILY_MAGE:
+            {
+                // Deep Freeze should deal damage to permanently stun-immune targets.
+                if (m_spellInfo->Id == 71757)
+                    if (unitTarget->GetTypeId() != TYPEID_UNIT || !(unitTarget->IsImmunedToSpellEffect(sSpellMgr->GetSpellInfo(24932), 0)))
+                        return;
                 break;
             }
         }
@@ -2725,17 +2733,17 @@ void Spell::EffectOpenLock(SpellEffIndex effIndex)
     if (gameObjTarget)
     {
         GameObjectTemplate const* goInfo = gameObjTarget->GetGOInfo();
-        // Arathi Basin banner opening !
+        // Arathi Basin banner opening. // TODO: Verify correctness of this check
         if ((goInfo->type == GAMEOBJECT_TYPE_BUTTON && goInfo->button.noDamageImmune) ||
             (goInfo->type == GAMEOBJECT_TYPE_GOOBER && goInfo->goober.losOK))
         {
             //CanUseBattlegroundObject() already called in CheckCast()
             // in battleground check
             if (Battleground *bg = player->GetBattleground())
-          {
-        bg->EventPlayerClickedOnFlag(player, gameObjTarget);
-        return;
-          }
+            {
+                bg->EventPlayerClickedOnFlag(player, gameObjTarget);
+                return;
+            }
         }
         else if (goInfo->type == GAMEOBJECT_TYPE_FLAGSTAND)
         {
@@ -5811,6 +5819,8 @@ void Spell::EffectAddExtraAttacks(SpellEffIndex effIndex)
     unitTarget->m_extraAttacks = damage;
 
     ExecuteLogEffectExtraAttacks(effIndex, unitTarget->getVictim(), damage);
+
+    m_caster->HandleProcExtraAttackFor(unitTarget->getVictim());
 }
 
 void Spell::EffectParry(SpellEffIndex /*effIndex*/)

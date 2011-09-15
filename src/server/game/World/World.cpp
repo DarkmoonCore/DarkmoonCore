@@ -399,6 +399,8 @@ void World::LoadConfigSettings(bool reload)
             sLog->outError("World settings reload fail: can't read settings from %s.", sConfig->GetFilename().c_str());
             return;
         }
+
+        sLog->ReloadConfig(); // Reload log levels and filters
     }
 
     ///- Read the player limit and the Message of the day from the config file
@@ -2323,7 +2325,7 @@ bool World::RemoveBanAccount(BanMode mode, std::string nameOrIP)
     {
         uint32 account = 0;
         if (mode == BAN_ACCOUNT)
-            account = sAccountMgr->GetId(nameOrIP);
+            account = AccountMgr::GetId(nameOrIP);
         else if (mode == BAN_CHARACTER)
             account = sObjectMgr->GetPlayerAccountIdByPlayerName(nameOrIP);
 

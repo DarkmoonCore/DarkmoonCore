@@ -1976,7 +1976,7 @@ void SpellMgr::LoadSpellThreats()
         ste.apPctMod = fields[3].GetFloat();
 
         mSpellThreatMap[entry] = ste;
-        count++;
+        ++count;
     } while (result->NextRow());
 
     sLog->outString(">> Loaded %u SpellThreatEntries in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
@@ -1991,7 +1991,7 @@ void SpellMgr::LoadSkillLineAbilityMap()
 
     uint32 count = 0;
 
-    for (uint32 i = 0; i < sSpellMgr->GetSpellInfoStoreSize(); ++i)
+    for (uint32 i = 0; i < sSkillLineAbilityStore.GetNumRows(); ++i)
     {
         SkillLineAbilityEntry const* SkillInfo = sSkillLineAbilityStore.LookupEntry(i);
         if (!SkillInfo)
@@ -2981,6 +2981,9 @@ void SpellMgr::LoadDbcDataCorrections()
                 // was 46, but effect is aura effect
                 spellInfo->EffectImplicitTargetA[0] = TARGET_UNIT_NEARBY_ENTRY;
                 spellInfo->EffectImplicitTargetB[0] = TARGET_DEST_NEARBY_ENTRY;
+                break;
+            case 19465: // Improved Stings, only rank 2 of this spell has target for effect 2 = TARGET_DST_DB
+                spellInfo->EffectImplicitTargetA[2] = TARGET_UNIT_CASTER;
                 break;
             case 59725: // Improved Spell Reflection - aoe aura
                 // Target entry seems to be wrong for this spell :/
